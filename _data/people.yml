@@ -1,0 +1,73 @@
+# =============================================================================
+# Lab Members
+# =============================================================================
+# To add a new person, copy the template below and fill in the fields.
+# The first person listed will be displayed as the PI (larger card).
+# Photos go in assets/images/people/ and should be square (e.g., 400x400 px).
+#
+# Template:
+#   - name: Full Name
+#     role: Role (e.g., PhD Student, Postdoc, Research Assistant)
+#     title: "Department or Program"
+#     photo: filename.jpg
+#     email: uniqname@umich.edu
+#     website: ""
+#     scholar: ""
+#     linkedin: ""
+#     bio: >
+#       A brief description of research interests and background.
+# =============================================================================
+
+- name: Ross Maddox, PhD
+  role: Principal Investigator
+  title: Associate Professor, Department of Otolaryngology—Head and Neck Surgery
+  photo: ross.jpg
+  email: rkmaddox@umich.edu
+  website: "https://maddoxlab.org"
+  scholar: https://scholar.google.com/citations?user=ky37necAAAAJ&hl=en
+  linkedin:
+  bio: >
+    Ross Maddox leads the Maddox Lab at the Kresge Hearing Research Institute,
+    University of Michigan. His research uses EEG and psychophysics to
+    investigate auditory processing and selective attention, from the brainstem
+    to the cortex.
+
+- name: Thomas Stoll, PhD
+  role: Postodoctoral Researcher
+  title: 
+  photo: tom.jpg
+  email: tomstoll@umich.edu
+  website: 
+  linkedin: https://www.linkedin.com/in/thomas-stoll/
+  scholar:
+  bio: 
+
+- name: Feifan Chen, PhD
+  role: Postodoctoral Researcher
+  title: 
+  photo: fan.jpg
+  email: feifanch@umich.edu
+  website: 
+  linkedin: https://www.linkedin.com/in/feifan-chen-295997175/
+  scholar:
+  bio: 
+
+- name: Penelope Corbett
+  role: Doctoral Student
+  title: 
+  photo: penny.jpg
+  email: corbe@umich.edu
+  website: 
+  linkedin: https://www.linkedin.com/in/penelope-corbett/
+  scholar:
+  bio: 
+
+- name: Gerilyn Jones, AuD
+  role: Research Audiologist
+  title: 
+  photo: gerilyn.jpg
+  email: gerjones@umich.edu
+  website: 
+  linkedin: https://www.linkedin.com/in/gerilyn11/
+  scholar:
+  bio: 

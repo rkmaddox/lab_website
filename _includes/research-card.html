@@ -1,0 +1,36 @@
+<div class="mb-5">
+  <div class="content-narrow">
+    <h3 class="mb-3">{{ include.area.title }}</h3>
+    {% if include.area.image != "" %}
+    <div class="mb-4 text-center">
+      <img src="{{ '/assets/images/research/' | append: include.area.image | relative_url }}"
+           class="img-fluid rounded shadow-sm" style="object-fit: contain; width: 50%;" alt="{{ include.area.title }}">
+    </div>
+    {% endif %}
+    <p>{{ include.area.description }}</p>
+
+    {% if include.area.papers.size > 0 %}
+    <h5 class="mt-4 mb-3 text-muted">Related publications</h5>
+    <ul class="research-pub-list">
+      {% for paper_id in include.area.papers %}
+        {% for year_group in site.data.publications %}
+          {% for paper in year_group.papers %}
+            {% if paper.id == paper_id %}
+            <li>
+              <span class="text-muted">{{ paper.authors }} ({{ year_group.year }}).</span>
+              {% if paper.doi != "" -%}
+              <a href="{{ paper.doi }}" target="_blank" class="fw-semibold text-decoration-none">{{ paper.title }}.</a>
+              {%- else -%}
+              <span class="fw-semibold">{{ paper.title }}.</span>
+              {%- endif %}
+              <span class="text-muted"><em>{{ paper.journal }}</em>{% if paper.volume != "" %}, {{ paper.volume }}{% endif %}.</span>
+              {% if paper.preprint %}<strong class="text-danger">Preprint.</strong>{% endif %}
+            </li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</div>

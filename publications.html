@@ -1,0 +1,21 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+narrow: true
+---
+
+<div class="content-narrow">
+  <p class="lead mb-5">
+    See <a href="https://scholar.google.com/citations?user=ky37necAAAAJ&hl=en" target="_blank">Google Scholar</a> for a complete list.
+  </p>
+
+  {% for group in site.data.publications %}
+  <h3 class="mt-4 mb-3">{{ group.year }}</h3>
+  <ul class="list-group list-group-flush mb-4">
+    {% for paper in group.papers %}
+      {% include publication-entry.html paper=paper %}
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</div>

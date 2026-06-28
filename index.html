@@ -1,0 +1,76 @@
+---
+layout: default
+title: Home
+---
+
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+  <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index: 0;">
+    <source src="{{ '/assets/video/hero.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <div class="container position-relative" style="z-index: 1;">
+    <div class="row align-items-center min-vh-50 py-5">
+      <div class="col-lg-8 mx-auto text-center" style="background-color: #2F65A7E8; padding: 3rem; border-radius: 0.5rem;">
+        <h1 class="display-3 fw-bold text-white mb-3">Maddox Lab @ UM</h1>
+        <p class="lead text-white mb-2">
+          Auditory Neuroscience &amp; Hearing Research
+        </p>
+        <p class="text-white">
+          Kresge Hearing Research Institute &bull; University of Michigan
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="mb-4">About us</h2>
+        <p class="lead">
+          We investigate how the human auditory system processes
+          complex sounds, from the brainstem to the cortex. Using techniques
+          including EEG, psychophysics, and computational modeling, we study
+          selective attention, subcortical auditory processing, and hearing
+          in challenging environments.
+        </p>
+        <p>
+          We are part of the
+          <a href="https://medicine.umich.edu/dept/khri">Kresge Hearing Research Institute</a>
+          in the <a href="https://medicine.umich.edu/dept/otolaryngology">Department of Otolaryngology–Head and Neck Surgery</a>
+          at the <a href="https://www.umich.edu/">University of Michigan</a> in Ann Arbor.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Highlights -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Research Areas</h2>
+    <div class="row g-4">
+      {% for area in site.data.research limit:3 %}
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          {% if area.image %}
+          <img src="{{ '/assets/images/research/' | append: area.image | relative_url }}"
+               class="card-img-top" style="object-fit: contain;" alt="{{ area.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ area.title }}</h5>
+            <p class="card-text text-muted">{{ area.description | truncatewords: 30 }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ '/research/' | relative_url }}" class="btn btn-outline-primary">
+        Learn more about our research &rarr;
+      </a>
+    </div>
+  </div>
+</section>

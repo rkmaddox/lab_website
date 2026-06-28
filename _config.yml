@@ -1,0 +1,21 @@
+title: Maddox Lab
+description: >
+  Auditory neuroscience research at the Kresge Hearing Research Institute,
+  University of Michigan.
+url: "https://maddoxlab.org"
+baseurl: ""
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
+
+# Exclude files from the built site
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - fetch_publications.py
+  - requirements.txt
+  - .venv
+  - DO_NOT_POST

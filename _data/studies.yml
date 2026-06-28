@@ -1,0 +1,25 @@
+# =============================================================================
+# Research Studies (Participate Page)
+# =============================================================================
+# Only studies with active: true will appear on the website.
+# Set active: false to hide a study without deleting it.
+#
+# Template:
+#   - title: "Study Title"
+#     description: >
+#       Brief description of the study and what participants will do.
+#     eligibility: "Who can participate (e.g., Adults 18-35 with normal hearing)"
+#     compensation: "$20/hour"
+#     contact: "labname@umich.edu"
+#     active: true
+# =============================================================================
+
+- title: "Hearing diagnosis in infants"
+  description: >
+    We are looking for infants to participate in our study investigating the
+    pABR, a faster and more accurate hearing test.
+    Sessions generally last 2-3 hours.
+  eligibility: "infants aged 0 to 6 months with normal hearing or with hearing loss"
+  compensation: "$20/hour"
+  contact: "maddoxlab@med.umich.edu"
+  active: true

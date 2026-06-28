@@ -1,0 +1,22 @@
+---
+layout: page
+title: Research
+permalink: /research/
+narrow: true
+---
+
+<div class="content-narrow mb-5">
+  <p class="lead mb-0">
+    Our research focuses on understanding how the human auditory system processes
+    complex sounds in real-world conditions and how we can diagnose hearing loss
+    that affects these processes. We combine electrophysiology, psychophysics,
+    and computational approaches.
+    <br><br>
+    See a list of our publications <a href="{{ '/publications/' | relative_url }}"> here</a>.
+  </p>
+</div>
+
+{% for area in site.data.research %}
+  {% include research-card.html area=area %}
+  {% unless forloop.last %}<hr class="my-5">{% endunless %}
+{% endfor %}

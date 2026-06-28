@@ -1,0 +1,244 @@
+// =============================================================================
+// Maddox Lab — Custom Styles
+// =============================================================================
+// Michigan Blue:  #00274C
+// Michigan Maize: #FFCB05
+// =============================================================================
+
+// --- Bootstrap CSS variable overrides --------------------------------------
+// Setting --bs-link-color (rather than overriding the bare `a` selector)
+// changes body content links only. Navbar links, buttons, and other
+// component-styled anchors use their own variables and stay correct.
+
+:root {
+  --bs-link-color: #00274C;
+  --bs-link-color-rgb: 0, 39, 76;
+  --bs-link-hover-color: #003366;
+  --bs-link-hover-color-rgb: 0, 51, 102;
+}
+
+// --- Container width cap ---------------------------------------------------
+// Bootstrap's .container jumps from 1140px (xl) to 1320px (xxl) on very wide
+// monitors. 1320px of running text is too wide for readability. Cap it at
+// 1140px globally so the layout stays contained on big screens.
+
+@media (min-width: 1400px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    max-width: 1140px;
+  }
+}
+
+// --- Narrow content wrapper ------------------------------------------------
+// Use on text-heavy page content (publications, lay-summary paragraphs)
+// to cap line length at a comfortable reading width.
+
+.content-narrow {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// --- Typography ------------------------------------------------------------
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #2c3338;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #00274C;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-weight: 700; }
+h2 { margin-top: 1.5rem; }
+
+p {
+  margin-bottom: 1.1rem;
+}
+
+// --- Navbar ----------------------------------------------------------------
+.bg-michigan-blue {
+  background-color: #00274C !important;
+}
+
+.navbar {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: #fff !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: color 0.15s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #FFCB05 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #FFCB05 !important;
+  font-weight: 600;
+}
+
+// --- Hero ------------------------------------------------------------------
+.hero-section {
+  background: linear-gradient(135deg, #00274C 0%, #003a6c 50%, #00274C 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #FFCB05;
+}
+
+.hero-section h1 {
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+// --- Page titles -----------------------------------------------------------
+.page-title {
+  color: #00274C;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.page-title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5rem;
+  height: 4px;
+  background: #FFCB05;
+  border-radius: 2px;
+}
+
+// --- Cards -----------------------------------------------------------------
+.card {
+  border-radius: 0.5rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card.shadow-sm {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+}
+
+.card.shadow-sm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 39, 76, 0.12) !important;
+}
+
+.card-title {
+  color: #00274C;
+}
+
+.card-img-top {
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+// --- Research page publication list ----------------------------------------
+// Compact bulleted list used under research area descriptions.
+// Separate from the publications page, which uses Bootstrap list-group.
+
+.research-pub-list {
+  padding-left: 1.3rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.research-pub-list li {
+  margin-bottom: 0.4rem;
+}
+
+// --- Publication highlight -------------------------------------------------
+.pub-highlight {
+  border-left: 3px solid #FFCB05;
+  padding-left: 1rem;
+  background: rgba(255, 203, 5, 0.04);
+}
+
+// --- Buttons ---------------------------------------------------------------
+.btn-primary {
+  --bs-btn-bg: #00274C;
+  --bs-btn-border-color: #00274C;
+  --bs-btn-hover-bg: #003a6c;
+  --bs-btn-hover-border-color: #003a6c;
+  --bs-btn-active-bg: #001e3c;
+  --bs-btn-active-border-color: #001e3c;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #00274C;
+  --bs-btn-border-color: #00274C;
+  --bs-btn-hover-bg: #00274C;
+  --bs-btn-hover-border-color: #00274C;
+  --bs-btn-hover-color: #fff;
+}
+
+// --- Footer ----------------------------------------------------------------
+.site-footer {
+  background-color: #f6f7f9;
+  border-top: 3px solid #FFCB05;
+  color: #555;
+}
+
+.site-footer .fw-semibold {
+  color: #00274C;
+}
+
+// --- Section spacing -------------------------------------------------------
+section {
+  padding-top: 1rem;
+}
+
+main {
+  min-height: 60vh;
+}
+
+// --- Misc utility ----------------------------------------------------------
+.text-michigan-blue {
+  color: #00274C;
+}
+
+.text-michigan-maize {
+  color: #FFCB05;
+}

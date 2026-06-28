@@ -1,0 +1,31 @@
+---
+layout: page
+title: People
+permalink: /people/
+---
+
+<div class="row">
+  {% for person in site.data.people %}
+    {% if forloop.first %}
+      {% include person-card.html person=person featured=true %}
+    {% else %}
+      {% include person-card.html person=person %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% if site.data.alumni.size > 0 %}
+<hr class="my-5">
+<h2 class="mb-4">Lab Alumni</h2>
+<div class="list-group list-group-flush">
+  {% for alum in site.data.alumni %}
+  <div class="list-group-item px-0">
+    <strong>{{ alum.name }}</strong>
+    <span class="text-muted">&mdash; {{ alum.role }}</span>
+    {% if alum.now %}
+    <br><small class="text-muted">Now: {{ alum.now }}</small>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

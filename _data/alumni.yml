@@ -1,0 +1,63 @@
+# =============================================================================
+# Alumni
+# =============================================================================
+# To add a former lab member, add an entry with their name, former role,
+# and (optionally) where they are now.
+#
+# Template:
+#   - name: Full Name
+#     role: "Former Role (years)"
+#     now: "Current position"
+# =============================================================================
+
+# - name: Former Student
+#   role: "PhD Student (2019-2024)"
+#   now: "Postdoc at MIT"
+
+- name: Madeline Cappelloni, PhD
+  role: "Doctoral Student (2017-2022)"
+  now: "Editor, <a href='https://radiologyai.substack.com/p/introducing-radiology-artificial'>Radiology: Artificial Intelligence</a>"
+
+- name: Tong Shan, PhD
+  role: "Doctoral Student (2018-2024)"
+  now: "Postdoctoral Researcher, <a href='https://profiles.stanford.edu/tong-shan'>Stanford University</a>"
+
+- name: Thomas Stoll, PhD
+  role: "Doctoral Student (2018-2024)"
+  now: "Postdoctoral Researcher, Maddox Lab"
+
+- name: Melissa Polonenko, PhD
+  role: "Postdoctoral Researcher (2018-2021)" 
+  now: "Assistant Professor, <a href='https://sites.google.com/umn.edu/pololab/home'>University of Minnesota</a>"
+
+- name: John Kyle Cooper, PhD
+  role: "Master's Student (2019-2021)"
+  now: "Postodoctoral researcher, <a href='https://www.zenaschao.com/'>University of Tokyo</a>"
+
+- name: Ashlynne Xavier
+  role: "Research Assistant (2022-2023)"
+  now: 
+
+- name: Yathida (Melody) Anankul
+  role: "Research Assistant (2021-2023)"
+  now: "Master's Student in Neuroscience, University of Chicago"
+
+- name: Emma Mantel
+  role: "Research Assistant (2020)"
+  now: 
+
+- name: Sara Fiscella
+  role: "Undergraduate Honors Student (2018-2019)"
+  now:  "Master's Student in Social Work, The Catholic University of America"
+
+- name: Casper Wenner
+  role: "Research Assistant (2018-2019)"
+  now: 
+
+- name: Veronica Valencerina
+  role: "Research Assistant (2017-2018)"
+  now: 
+
+- name: Kevin Paskiet
+  role: "Lab technician (2016-2017)"
+  now: 

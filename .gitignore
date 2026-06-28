@@ -1,0 +1,21 @@
+# Private content — never commit
+DO_NOT_POST/
+
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Claude Code local settings
+.claude/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db

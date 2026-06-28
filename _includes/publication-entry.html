@@ -1,0 +1,21 @@
+<li class="list-group-item px-0 {% if include.paper.highlight %}pub-highlight{% endif %}">
+  <p class="mb-1">
+    <span class="text-muted">{{ include.paper.authors }}.</span>
+    {% if include.paper.doi != "" -%}
+    <a href="{{ include.paper.doi }}" target="_blank" class="fw-semibold text-decoration-none">{{ include.paper.title }}.</a>
+    {%- else -%}
+    <span class="fw-semibold">{{ include.paper.title }}.</span>
+    {%- endif %}
+    <span class="text-muted">
+      <em>{{ include.paper.journal }}</em>{% if include.paper.volume != "" %}, {{ include.paper.volume }}{% endif %}.
+    </span>
+    {% if include.paper.preprint %}
+    <strong class="text-danger">Preprint.</strong>
+    {% endif %}
+  </p>
+  {% if include.paper.pdf != "" %}
+  <a href="{{ include.paper.pdf }}" class="btn btn-sm btn-outline-secondary" target="_blank">
+    <i class="bi bi-file-pdf"></i> PDF
+  </a>
+  {% endif %}
+</li>

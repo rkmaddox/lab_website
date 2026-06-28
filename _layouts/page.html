@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="container py-5">
+  {% if page.narrow %}
+  <div class="content-narrow">
+    <h1 class="page-title mb-4">{{ page.title }}</h1>
+  </div>
+  {% else %}
+  <h1 class="page-title mb-4">{{ page.title }}</h1>
+  {% endif %}
+  {{ content }}
+</div>

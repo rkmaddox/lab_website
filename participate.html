@@ -1,0 +1,61 @@
+---
+layout: page
+title: Participate in Our Research
+permalink: /participate/
+narrow: true
+---
+
+<div class="content-narrow mb-5">
+  <p class="lead mb-0">
+    We are always looking for volunteers to participate in our research studies.
+    Your participation helps advance our understanding of how the brain
+    processes sound.
+  </p>
+</div>
+
+{% assign active_studies = site.data.studies | where: "active", true %}
+
+{% if active_studies.size > 0 %}
+<div class="row g-4">
+  {% for study in active_studies %}
+  <div class="col-md-6">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title">{{ study.title }}</h4>
+        <p class="card-text">{{ study.description }}</p>
+        {% if study.eligibility %}
+        <p class="mb-1"><strong>Who can participate:</strong> {{ study.eligibility }}</p>
+        {% endif %}
+        {% if study.compensation %}
+        <p class="mb-1"><strong>Compensation:</strong> {{ study.compensation }}</p>
+        {% endif %}
+        <p class="mt-3 mb-0">
+          <a href="mailto:{{ study.contact }}" class="btn btn-primary">
+            <i class="bi bi-envelope"></i> Contact us to participate
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+  <i class="bi bi-info-circle"></i>
+  We don't have any active studies recruiting participants at the moment.
+  Check back soon, or contact us if you're interested in future opportunities.
+</div>
+{% endif %}
+
+<hr class="my-5">
+
+<div class="content-narrow">
+  <h3>General Information</h3>
+  <p>
+    All of our studies are approved by the University of Michigan Institutional
+    Review Board (IRB). Participation is voluntary, and you may withdraw at
+    any time. If you have questions about participating in our research, please
+    contact us at
+    <a href="mailto:rkmaddox@umich.edu">rkmaddox@umich.edu</a>.
+  </p>
+</div>

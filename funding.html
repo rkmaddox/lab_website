@@ -1,0 +1,37 @@
+---
+layout: page
+title: Funding
+permalink: /funding/
+---
+
+<p class="lead mb-5">
+  Our research has been made possible by the generous support of several funding agencies and programs, including:
+</p>
+
+<div class="row g-4 align-items-center justify-content-center">
+  {% for funder in site.data.funding %}
+  <div class="col-6 col-md-4 col-lg-3 text-center">
+    <a href="{{ funder.url }}" target="_blank" class="text-decoration-none">
+      {% if funder.logo != "" %}
+      <img src="{{ '/assets/images/logos/' | append: funder.logo | relative_url }}"
+           alt="{{ funder.name }}" class="img-fluid mb-2" style="max-height: 100px;">
+      {% else %}
+      <div class="bg-light rounded d-flex align-items-center justify-content-center mx-auto mb-2"
+           style="width: 120px; height: 100px;">
+        <i class="bi bi-building text-muted" style="font-size: 2rem;"></i>
+      </div>
+      {% endif %}
+      <p class="small fw-semibold text-body">{{ funder.name }}</p>
+    </a>
+    {% if funder.grant != "" %}
+    <p class="text-muted small">{{ funder.grant }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<p class="lead mb-5">
+  If you would like to support our work, you can donate <a href="https://giving.umich.edu/basket/fund/308722/recurring/category/medicine-and-health,research-support,michigan-medicine_clinical-departments" target="_blank" rel="noopener noreferrer">
+    here</a> (please indicate in the comment that you want to support the Maddox Lab) or
+    <a href="mailto:rkmaddox@umich.edu" target="_blank" rel="noopener noreferrer">email Ross</a>.
+</p>

@@ -1,0 +1,111 @@
+# =============================================================================
+# Research Areas
+# =============================================================================
+# To add a new research area, copy the template below and fill in the fields.
+# Images go in assets/images/research/ (landscape orientation works best).
+# The 'papers' list contains IDs matching the 'id' field in publications.yml.
+# Matched papers will be displayed under the research area description.
+#
+# Template:
+#   - title: Research Area Title
+#     image: filename.jpg
+#     description: >
+#       A paragraph describing this research area, its goals, methods, and
+#       significance.
+#     papers:
+#       - some-paper-id
+#       - another-paper-id
+# =============================================================================
+
+- title: Fast hearing diagnosis with the parallel ABR
+  image: "pabr.jpg"
+  description: >
+    An infant being tested for hearing loss has only as long as their nap.
+    The diagnostic auditory brainstem response (ABR)—the standard test of an
+    infant's hearing—is traditionally measured one frequency, one ear, and
+    one stimulus level at a time, an exam that often runs longer than the
+    patient will sleep. Together with the PoloLab at the University of
+    Minnesota, we are developing the parallel ABR (pABR), which measures responses
+    to every frequency in both ears at once and collapses the threshold
+    search from three dimensions to one. The result is the same waveforms an
+    audiologist already knows how to read, collected in a fraction of the
+    time: in adults with widely varying hearing loss, pABR thresholds
+    correlate with the behavioral audiogram at r = 0.90 and are 
+    2.5 times faster to obtain than with a standard clinical system. Even when a
+    session ends early, the pABR provides at least some information about
+    every frequency in both ears, where serial testing would leave most
+    untested. Our next step is to validate the pABR in infants with hearing
+    loss—the patients who stand to benefit most from a faster, more complete
+    diagnostic test.
+  papers:
+    - polonenko-2025-pabr-clinic
+    - polonenko-2025-pabr-bone
+    - maddox-2025-denoising-patent
+    - stoll-2024-place-specificity
+    - stoll-2023-place-specificity-model
+    - polonenko-2022-pabr-params
+    - polonenko-2019-pabr
+
+- title: How the brain encodes natural sounds
+  image: "encoding.jpg"
+  description: >
+    Listening in the real world means picking up a single voice in a crowded
+    room, following a melody over a distant hum, or catching a friend's name
+    on a noisy sidewalk. Most of what we know about how the brain processes
+    sound, however, comes from laboratory experiments that have necessarily
+    reduced these scenes to clicks, beeps, and isolated syllables—the price
+    of the experimental control that traditional methods require. We have
+    developed new ways to measure the human auditory brainstem response
+    (ABR) directly from continuous, naturalistic sounds like speech and
+    music, using carefully designed stimuli ('peaky speech') and
+    signal-processing approaches that account for how the auditory periphery
+    actually responds to complex sound. With these tools we have shown that
+    the brainstem tracks individual talkers in a mixture, that responses to
+    music and speech share more than they differ, and that masking by
+    competing voices shrinks and slows subcortical responses in measurable
+    ways. Our current focus is developing a deep neural network model of
+    human auditory encoding. To do this we will use nearly all the data
+    we have collected in the past decade, while also collecting tens of
+    hours of EEG from each of a small group of listeners—data unlike
+    anything currently available. We will use the model to inform the next
+    generation of hearing aid signal processing and audiologic diagnosis.
+  papers:
+    - shan-2026-chimeric-music
+    - figarola-2026-pseudo-tone
+    - stoll-2025-attention
+    - polonenko-2025-speech-masking
+    - shan-2025-comparing-methods
+    - polonenko-2024-f0-talker
+    - shan-2024-music-speech
+    - polonenko-2021-peaky-speech
+    - maddox-2018-speech-abr
+
+- title: How the visual system shapes hearing
+  image: "audiovisual.jpg"
+  description: >
+    Watching a talker's face helps you understand them in a noisy room. The
+    reason for this is partly obvious—lip-reading conveys phonetic
+    information that the auditory signal alone may not—but the visual system
+    also acts on hearing in subtler ways, biasing what the brain attends to
+    even when the visual cues themselves carry no specific message. We spent
+    several years investigating how vision shapes auditory selective
+    attention, finding that a simple visual signal whose timing matches a
+    target voice can make that voice easier to hear in a mixture, and that
+    this effect operates even when the visual stimulus contains no useful
+    information of its own. In collaboration with Jennifer Bizley's lab at
+    University College London, we showed that the same principle holds in
+    the auditory cortex of the awake animal: visual cues coherent with one
+    of two simultaneous sounds bind to it neurally, helping the brain
+    segregate competing auditory streams. Together these studies established
+    temporal coherence as a genuine mechanism by which vision contributes to
+    listening, complementing the more familiar role of lip-reading.
+  papers:
+    - cappelloni-2023-av-attention
+    - fiscella-2022-temporal-linguistic
+    - shan-2022-dnn-face
+    - fleming-2021-spatial-av
+    - cappelloni-2019-visual-spatial
+    - atilgan-2018-av-cortex
+    - bizley-2016-av-objects
+    - maddox-2015-av-attention
+    - maddox-2014-eye-gaze

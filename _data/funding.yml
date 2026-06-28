@@ -1,0 +1,27 @@
+# =============================================================================
+# Funding Sources
+# =============================================================================
+# To add a new funder, copy the template below.
+# Logos go in assets/images/logos/ (PNG or SVG, ~200px wide works well).
+#
+# Template:
+#   - name: "Funding Agency Name"
+#     logo: "filename.png"
+#     url: "https://funder-website.org/"
+#     grant: "Grant number or title (optional)"
+# =============================================================================
+
+- name: "National Institutes of Health (NIDCD)"
+  logo: "nidcd.png"
+  url: "https://www.nidcd.nih.gov/"
+  grant: ""
+
+- name: "National Science Foundation"
+  logo: "nsf.png"
+  url: "https://www.nsf.gov/"
+  grant: ""
+
+- name: "Hearing Health Foundation"
+  logo: "hhf.jpg"
+  url: "https://www.hearinghealthfoundation.org/"
+  grant: ""
