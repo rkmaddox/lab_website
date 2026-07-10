@@ -235,6 +235,25 @@ main {
   min-height: 60vh;
 }
 
+// --- Updates feed ------------------------------------------------------------
+// Compact cards (homepage) reuse existing .card-img-top rules above.
+// Feed items (archive page) use a flex-wrap thumbnail row so any number of
+// images (including zero) lays out cleanly without a JS carousel.
+
+.update-gallery-img {
+  height: 180px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.update-feed-item:last-child {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 // --- Misc utility ----------------------------------------------------------
 .text-michigan-blue {
   color: #00274C;

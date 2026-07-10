@@ -1,0 +1,50 @@
+{% if include.mode == "compact" %}
+<!-- Compact card: homepage preview -->
+<div class="col-md-4 mb-4">
+  <div class="card h-100 border-0 shadow-sm update-card">
+    {% if include.update.images and include.update.images.size > 0 %}
+    <img src="{{ '/assets/images/updates/' | append: include.update.images.first | relative_url }}"
+         class="card-img-top" alt="{{ include.update.title }}">
+    {% endif %}
+    <div class="card-body">
+      <p class="update-date text-muted small mb-1">{{ include.update.date | date: "%B %-d, %Y" }}</p>
+      <h5 class="card-title">{{ include.update.title }}</h5>
+      <p class="card-text text-muted">
+        {% if include.update.summary %}{{ include.update.summary }}{% else %}{{ include.update.content | strip_html | truncatewords: 30 }}{% endif %}
+      </p>
+      <a href="{{ include.update.url | relative_url }}" class="stretched-link"></a>
+    </div>
+  </div>
+</div>
+{% else %}
+<!-- Feed item: full archive listing -->
+<div class="update-feed-item mb-5 pb-5 border-bottom">
+  <div class="content-narrow">
+    <p class="update-date text-muted small mb-1">{{ include.update.date | date: "%B %-d, %Y" }}</p>
+    <h3 class="mb-3">
+      <a href="{{ include.update.url | relative_url }}" class="text-decoration-none">{{ include.update.title }}</a>
+    </h3>
+    {% if include.update.images and include.update.images.size > 0 %}
+    <div class="update-gallery d-flex flex-wrap gap-2 mb-3">
+      {% for img in include.update.images %}
+      {% assign modal_id = include.update.title | slugify | append: "-img-" | append: forloop.index %}
+      <a href="#" data-bs-toggle="modal" data-bs-target="#{{ modal_id }}">
+        <img src="{{ '/assets/images/updates/' | append: img | relative_url }}"
+             class="update-gallery-img rounded shadow-sm" alt="{{ include.update.title }}">
+      </a>
+      <div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content bg-transparent border-0">
+            <button type="button" class="btn-close btn-close-white ms-auto m-2" data-bs-dismiss="modal" aria-label="Close"></button>
+            <img src="{{ '/assets/images/updates/' | append: img | relative_url }}"
+                 class="img-fluid rounded" alt="{{ include.update.title }}">
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {{ include.update.content }}
+  </div>
+</div>
+{% endif %}

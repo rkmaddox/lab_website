@@ -74,3 +74,23 @@ title: Home
     </div>
   </div>
 </section>
+
+{% if site.updates.size > 0 %}
+<!-- Latest Updates -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Latest Updates</h2>
+    <div class="row g-4">
+      {% assign recent_updates = site.updates | sort: "date" | reverse %}
+      {% for update in recent_updates limit:3 %}
+        {% include update-card.html update=update mode="compact" %}
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ '/updates/' | relative_url }}" class="btn btn-outline-primary">
+        See all updates &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}

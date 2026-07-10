@@ -11,6 +11,18 @@ markdown: kramdown
 plugins:
   - jekyll-seo-tag
 
+collections:
+  updates:
+    output: true
+    permalink: /updates/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: updates
+    values:
+      layout: update
+
 # Exclude files from the built site
 exclude:
   - README.md

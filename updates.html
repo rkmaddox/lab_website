@@ -1,0 +1,15 @@
+---
+layout: page
+title: Updates
+permalink: /updates/
+narrow: true
+---
+
+{% assign sorted_updates = site.updates | sort: "date" | reverse %}
+{% if sorted_updates.size > 0 %}
+  {% for update in sorted_updates %}
+    {% include update-card.html update=update mode="feed" %}
+  {% endfor %}
+{% else %}
+<p class="text-muted text-center py-5">No updates yet — check back soon!</p>
+{% endif %}
