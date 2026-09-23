@@ -52,7 +52,7 @@ When you push changes to GitHub, the site automatically rebuilds in about 30 sec
 
 ### Update Publications (automatic)
 
-The publications page can be auto-populated from PubMed and bioRxiv/medRxiv:
+The publications page can be auto-populated from PubMed, bioRxiv/medRxiv, and arXiv:
 
 ```bash
 pip install -r requirements.txt   # first time only
@@ -61,9 +61,9 @@ python fetch_publications.py
 
 This script:
 1. Searches PubMed for all papers by "maddox rk"
-2. Searches bioRxiv/medRxiv for preprints by the same author
-3. Checks each preprint to see if it has been published — if so, only the
-   published version is included
+2. Searches arXiv for preprints by "Ross Maddox"
+3. Checks each bioRxiv/medRxiv preprint to see if it has been published — if
+   so, only the published version is included
 4. Unpublished preprints are marked with bold **Preprint.** on the website
 5. Writes `_data/publications.yml`
 

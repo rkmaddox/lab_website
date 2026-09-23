@@ -14,6 +14,15 @@
 
 - year: 2026
   papers:
+  - id: stoll-2026-deep-neural-network
+    title: A Deep Neural Network for Predicting Continuous Human EEG Across the Auditory Pathway in Response to Sound
+    authors: Stoll TJ, Maddox RK
+    journal: arXiv
+    volume: ''
+    doi: https://doi.org/10.48550/arXiv.2609.20595
+    pdf: ''
+    highlight: false
+    preprint: true
   - id: figarola-2026-pseudo-tone
     title: Attention to Pseudotone Melodies Enhances Cortical But Not Brainstem Responses in Humans
     authors: Figarola V, Li Y, Tierney A, Dick F, Noyce A, Maddox RK, Shinn-Cunningham B
@@ -27,7 +36,7 @@
     title: Bone-Conducted Responses Using the Parallel Auditory Brainstem Response Paradigm
     authors: Polonenko MJ, Maddox RK
     journal: Ear Hear
-    volume: ''
+    volume: 47(5), 1397-1405
     doi: https://doi.org/10.1097/AUD.0000000000001833
     pdf: ''
     highlight: false
@@ -282,6 +291,15 @@
     preprint: false
 - year: 2019
   papers:
+  - id: ''
+    title: Hierarchical Cross-Modal Talking Face Generationwith Dynamic Pixel-Wise Loss
+    authors: Chen L, Maddox RK, Duan Z, Xu C
+    journal: CVPR 2019
+    volume: ''
+    doi: https://doi.org/10.48550/arXiv.1905.03820
+    pdf: ''
+    highlight: false
+    preprint: false
   - id: cappelloni-2019-visual-spatial
     title: Task-uninformative visual stimuli improve auditory spatial discrimination in humans but not the ideal observer
     authors: Cappelloni MS, Shivkumar S, Haefner RM, Maddox RK

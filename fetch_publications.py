@@ -22,6 +22,8 @@ Manual edits to highlight and pdf fields are preserved across re-runs.
 import os
 import re
 import time
+import urllib.parse
+import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -33,12 +35,14 @@ import yaml
 # Configuration — edit these to match your lab
 # =============================================================================
 PUBMED_QUERY = "maddox rk[au]"
+ARXIV_QUERY = 'au:"Ross Maddox"'
 OUTPUT_FILE = os.path.join("_data", "publications.yml")
 
 # API endpoints
 ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
 BIORXIV_API = "https://api.biorxiv.org"
+ARXIV_API = "https://export.arxiv.org/api/query"
 
 # Rate limiting (NCBI allows 3 req/sec without API key)
 API_DELAY = 0.35
@@ -244,6 +248,108 @@ def _extract_year(pubdate_elem):
 
 
 # =============================================================================
+# arXiv Functions
+# =============================================================================
+
+ARXIV_NS = {
+    "atom": "http://www.w3.org/2005/Atom",
+    "arxiv": "http://arxiv.org/schemas/atom",
+}
+
+
+def fetch_arxiv_records(query, max_results=100):
+    """Search arXiv and return a list of paper dicts (schema matches PubMed records).
+
+    Uses urllib rather than requests — arXiv's Fastly frontend returns 406 Not
+    Acceptable for requests' default header set for reasons that aren't clear,
+    but is happy with urllib's.
+    """
+    url = ARXIV_API + "?" + urllib.parse.urlencode(
+        {"search_query": query, "start": 0, "max_results": max_results}
+    )
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "maddoxlab-website-fetcher/1.0 (mailto:rkmaddox@umich.edu)"}
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        body = resp.read()
+    root = ET.fromstring(body)
+
+    papers = []
+    for entry in root.findall("atom:entry", ARXIV_NS):
+        paper = _parse_arxiv_entry(entry)
+        if paper:
+            papers.append(paper)
+
+    print(f"  arXiv search returned {len(papers)} results")
+    return papers
+
+
+def _parse_arxiv_entry(entry):
+    """Parse a single arXiv Atom <entry> into a dict.
+
+    If the entry has a journal_ref (e.g. a conference proceedings citation —
+    common for CS/engineering venues that never touch PubMed), it's treated
+    as a published paper using that venue instead of a preprint.
+    """
+    journal_ref_elem = entry.find("arxiv:journal_ref", ARXIV_NS)
+    journal_ref = journal_ref_elem.text.strip() if journal_ref_elem is not None and journal_ref_elem.text else ""
+    journal_ref = re.sub(r"^published in\s+", "", journal_ref, flags=re.IGNORECASE)
+    is_preprint = not journal_ref
+
+    title_elem = entry.find("atom:title", ARXIV_NS)
+    title = re.sub(r"\s+", " ", title_elem.text).strip() if title_elem is not None and title_elem.text else ""
+    if not title:
+        return None
+
+    authors = []
+    for author in entry.findall("atom:author", ARXIV_NS):
+        name_elem = author.find("atom:name", ARXIV_NS)
+        if name_elem is not None and name_elem.text:
+            authors.append(_arxiv_name_to_lastname_initials(name_elem.text.strip()))
+    authors_str = ", ".join(authors)
+
+    id_elem = entry.find("atom:id", ARXIV_NS)
+    arxiv_id = ""
+    if id_elem is not None and id_elem.text:
+        arxiv_id = id_elem.text.strip().rsplit("/", 1)[-1]
+        arxiv_id = re.sub(r"v\d+$", "", arxiv_id)  # strip version suffix
+    arxiv_doi = f"https://doi.org/10.48550/arXiv.{arxiv_id}" if arxiv_id else ""
+
+    # Published papers may carry a publisher DOI (e.g. an IEEE Xplore DOI for
+    # a conference paper); fall back to the arXiv DOI if not present.
+    pub_doi_elem = entry.find("arxiv:doi", ARXIV_NS)
+    pub_doi = pub_doi_elem.text.strip() if pub_doi_elem is not None and pub_doi_elem.text else ""
+    doi = (f"https://doi.org/{pub_doi}" if pub_doi else arxiv_doi) if not is_preprint else arxiv_doi
+
+    published_elem = entry.find("atom:published", ARXIV_NS)
+    year = ""
+    if published_elem is not None and published_elem.text:
+        year = published_elem.text[:4]
+    if not year:
+        return None
+
+    return {
+        "title": title,
+        "authors": authors_str,
+        "journal": journal_ref if not is_preprint else "arXiv",
+        "volume": "",
+        "doi": doi,
+        "year": int(year),
+        "is_preprint": is_preprint,
+    }
+
+
+def _arxiv_name_to_lastname_initials(full_name):
+    """Convert 'Ross K Maddox' to 'Maddox RK' to match PubMed's author format."""
+    parts = full_name.split()
+    if len(parts) < 2:
+        return full_name
+    last = parts[-1]
+    initials = "".join(p[0] for p in parts[:-1] if p)
+    return f"{last} {initials}" if initials else last
+
+
+# =============================================================================
 # bioRxiv/medRxiv Publication Check
 # =============================================================================
 
@@ -348,8 +454,8 @@ def filter_preprints(papers):
             print(f"    skip (older than {PREPRINT_MAX_AGE_YEARS} years):          {short_title}...")
             continue
 
-        # Check 3: Ask the bioRxiv/medRxiv API
-        if pp["doi"]:
+        # Check 3: Ask the bioRxiv/medRxiv API (not applicable to arXiv)
+        if pp["doi"] and pp["journal"] in ("bioRxiv", "medRxiv"):
             print(f"    checking: {short_title}...")
             if check_preprint_published(pp["doi"]):
                 print(f"    skip (published per API):            {short_title}...")
@@ -480,22 +586,26 @@ def main():
     print("=" * 60)
 
     # Step 1: Search PubMed (returns both published papers and preprints)
-    print(f"\n[1/3] Searching PubMed for \"{PUBMED_QUERY}\"...")
+    print(f"\n[1/4] Searching PubMed for \"{PUBMED_QUERY}\"...")
     pmids = search_pubmed(PUBMED_QUERY)
     all_papers = fetch_pubmed_records(pmids)
     n_preprints = sum(1 for p in all_papers if p["is_preprint"])
     print(f"  Retrieved {len(all_papers)} records "
           f"({len(all_papers) - n_preprints} published, {n_preprints} preprints)")
 
-    # Step 2: Filter preprints — check bioRxiv/medRxiv API for each one
-    print(f"\n[2/3] Filtering preprints...")
+    # Step 2: Search arXiv for preprints
+    print(f"\n[2/4] Searching arXiv for \"{ARXIV_QUERY}\"...")
+    all_papers += fetch_arxiv_records(ARXIV_QUERY)
+
+    # Step 3: Filter preprints — check bioRxiv/medRxiv API for each one
+    print(f"\n[3/4] Filtering preprints...")
     filtered = filter_preprints(all_papers)
 
-    # Step 3: Group by year and write
+    # Step 4: Group by year and write
     publications = group_by_year(filtered)
     publications = merge_with_existing(publications, OUTPUT_FILE)
 
-    print(f"\n[3/3] Writing {OUTPUT_FILE}...")
+    print(f"\n[4/4] Writing {OUTPUT_FILE}...")
     write_yaml(publications, OUTPUT_FILE)
 
     print("\nDone!")
