@@ -62,6 +62,10 @@ title: Home
           <div class="card-body">
             <h5 class="card-title">{{ area.title }}</h5>
             <p class="card-text text-muted">{{ area.description | truncatewords: 30 }}</p>
+            <!-- Anchor derived the same way as in research-card.html, so the
+                 link follows the area even if its title or id changes. -->
+            <a href="{{ '/research/' | relative_url }}#{{ area.id | default: area.title | slugify }}"
+               class="stretched-link" aria-label="{{ area.title }}"></a>
           </div>
         </div>
       </div>
