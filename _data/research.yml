@@ -25,6 +25,33 @@
 #       - another-paper-id
 # =============================================================================
 
+- title: Predicting the brain's response to sound
+  id: brain-response-model
+  image: "brain-response-model.png"
+  description: >
+    Measuring how a person's brain responds to sound takes hours in a quiet
+    room with electrodes on the scalp, and each session answers one narrow
+    question: how the brain responds to that experiment's specific stimuli.
+    Decades of
+    such experiments have produced a catalog of
+    separate findings rather than a single account of how the ear and brain
+    turn sound into electricity. We are building that account as a model.
+    Using hundreds of hours of EEG recorded in our lab from dozens of people
+    listening to natural and artificial stimuli, we trained
+    a deep neural network that predicts the response a sound evokes, from the
+    auditory nerve a few milliseconds later to the cortex hundreds of
+    milliseconds after that. The model reproduces phenomena it was never explicitly trained on,
+    such as how the response to a click differs when it is presented in both ears together versus separately.
+    Its predictions match the average
+    human response about as closely as an individual listener's own recording
+    does. A model this accurate lets us try an experiment in the computer
+    before running it on people. Our
+    next step is to extend the model across age and degree of hearing loss, so
+    that its predictions hold for the people whose hearing we most want to
+    diagnose and improve through the next generation of devices.
+  papers:
+    - stoll-2026-deep-neural-network
+
 - title: Fast hearing diagnosis with the parallel ABR
   image: "pabr.jpg"
   description: >
@@ -88,33 +115,6 @@
     - shan-2024-music-speech
     - polonenko-2021-peaky-speech
     - maddox-2018-speech-abr
-
-- title: Predicting the brain's response to sound
-  id: brain-response-model
-  image: "brain-response-model.png"
-  description: >
-    Measuring how a person's brain responds to sound takes hours in a quiet
-    room with electrodes on the scalp, and each session answers one narrow
-    question: how the brain responds to that experiment's specific stimuli.
-    Decades of
-    such experiments have produced a catalog of
-    separate findings rather than a single account of how the ear and brain
-    turn sound into electricity. We are building that account as a model.
-    Using hundreds of hours of EEG recorded in our lab from dozens of people
-    listening to natural and artificial stimuli, we trained
-    a deep neural network that predicts the response a sound evokes, from the
-    auditory nerve a few milliseconds later to the cortex hundreds of
-    milliseconds after that. The model reproduces phenomena it was never explicitly trained on,
-    such as how the response to a click differs when it is presented in both ears together versus separately.
-    Its predictions match the average
-    human response about as closely as an individual listener's own recording
-    does. A model this accurate lets us try an experiment in the computer
-    before running it on people. Our
-    next step is to extend the model across age and degree of hearing loss, so
-    that its predictions hold for the people whose hearing we most want to
-    diagnose and improve through the next generation of devices.
-  papers:
-    - stoll-2026-deep-neural-network
 
 - title: How the visual system shapes hearing
   image: "audiovisual.jpg"
