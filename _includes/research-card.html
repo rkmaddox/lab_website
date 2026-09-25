@@ -1,4 +1,4 @@
-<div class="mb-5">
+<div class="mb-5 research-area" id="{{ include.area.id | default: include.area.title | slugify }}">
   <div class="content-narrow">
     <h3 class="mb-3">{{ include.area.title }}</h3>
     {% if include.area.image != "" %}

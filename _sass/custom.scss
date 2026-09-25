@@ -175,6 +175,16 @@ p {
   border-top-right-radius: 0.5rem;
 }
 
+// --- Research area anchors -------------------------------------------------
+// Each research area gets an id slugified from its title so areas can be
+// linked to directly (e.g. /research/#predicting-the-brains-response-to-sound).
+// The navbar is sticky-top, so offset the scroll target to keep the heading
+// clear of it.
+
+.research-area {
+  scroll-margin-top: 5rem;
+}
+
 // --- Research page publication list ----------------------------------------
 // Compact bulleted list used under research area descriptions.
 // Separate from the publications page, which uses Bootstrap list-group.

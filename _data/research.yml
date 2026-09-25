@@ -6,8 +6,16 @@
 # The 'papers' list contains IDs matching the 'id' field in publications.yml.
 # Matched papers will be displayed under the research area description.
 #
+# Each area gets an HTML anchor so it can be linked to directly, e.g.
+# /research/#brain-response-model, or from another area's description with
+# <a href="#brain-response-model">...</a>. The anchor is the 'id' field if
+# given, otherwise the title lowercased with dashes. Set 'id' explicitly when
+# the auto-generated one would be awkward (titles with apostrophes) or when
+# you want the link to survive a future retitling.
+#
 # Template:
 #   - title: Research Area Title
+#     id: short-anchor-name     # optional
 #     image: filename.jpg
 #     description: >
 #       A paragraph describing this research area, its goals, methods, and
@@ -63,8 +71,9 @@
     the brainstem tracks individual talkers in a mixture, that responses to
     music and speech share more than they differ, and that masking by
     competing voices shrinks and slows subcortical responses in measurable
-    ways. Our current focus is developing a deep neural network model of
-    human auditory encoding. To do this we will use nearly all the data
+    ways. Our current focus is <a href="#brain-response-model">developing a
+    deep neural network model of human auditory encoding</a>. To do this we
+    will use nearly all the data
     we have collected in the past decade, while also collecting tens of
     hours of EEG from each of a small group of listeners—data unlike
     anything currently available. We will use the model to inform the next
@@ -79,6 +88,33 @@
     - shan-2024-music-speech
     - polonenko-2021-peaky-speech
     - maddox-2018-speech-abr
+
+- title: Predicting the brain's response to sound
+  id: brain-response-model
+  image: "brain-response-model.png"
+  description: >
+    Measuring how a person's brain responds to sound takes hours in a quiet
+    room with electrodes on the scalp, and each session answers one narrow
+    question: how the brain responds to that experiment's specific stimuli.
+    Decades of
+    such experiments have produced a catalog of
+    separate findings rather than a single account of how the ear and brain
+    turn sound into electricity. We are building that account as a model.
+    Using hundreds of hours of EEG recorded in our lab from dozens of people
+    listening to natural and artificial stimuli, we trained
+    a deep neural network that predicts the response a sound evokes, from the
+    auditory nerve a few milliseconds later to the cortex hundreds of
+    milliseconds after that. The model reproduces phenomena it was never explicitly trained on,
+    such as how the response to a click differs when it is presented in both ears together versus separately.
+    Its predictions match the average
+    human response about as closely as an individual listener's own recording
+    does. A model this accurate lets us try an experiment in the computer
+    before running it on people. Our
+    next step is to extend the model across age and degree of hearing loss, so
+    that its predictions hold for the people whose hearing we most want to
+    diagnose and improve through the next generation of devices.
+  papers:
+    - stoll-2026-deep-neural-network
 
 - title: How the visual system shapes hearing
   image: "audiovisual.jpg"
